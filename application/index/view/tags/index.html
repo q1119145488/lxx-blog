@@ -1,0 +1,75 @@
+{include file="public/header" /}
+    
+	<div class="post">
+    	   <h3>Tags"{$tag}"</h3><hr/>
+        
+
+            <div class="article">
+            	<table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                Published
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="archivelist">
+                            {volist name="list" id="vo"}
+                            <tr>
+                                <td>
+                                    <a href="{:url('post/index',['id'=>$vo.id])}">
+                                        {$vo.title}
+                                    </a>
+                                </td>
+                                <td>
+                                    {$vo.time|date="Y-m-d H:i:s",###}
+                                </td>
+                            </tr>
+                            {/volist}
+                    </tbody>
+                </table>
+        </div><!--article-->
+         
+        
+    </div><!--post-->
+    
+    {include file="public/about-me" /}
+
+    <div class="top">
+        <img src="{:url('/')}__STATIC__/images/top1.jpg"></img>
+    </div>
+</div><!--main-->
+
+<div class="footer">
+	
+</div><!--footer-->
+
+<script>
+$(function(){
+ 
+         $('.top').hide();        //隐藏go to top按钮
+ 
+         $(window).scroll(function(){
+            // console.log($(this).scrollTop());
+ 
+            //当window的scrolltop距离大于1时，go to 
+             if($(this).scrollTop() > 100){
+                $('.top').fadeIn();
+
+             }else{
+                 $('.top').fadeOut();
+            }
+         });
+ 
+         $('.top').click(function(){
+             $('html ,body').animate({scrollTop: 0}, 300);
+        });
+ 
+
+     });
+</script>
+</body>
+</html>

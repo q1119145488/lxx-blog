@@ -1,0 +1,61 @@
+html{height:100%;}
+.m{width:100%;max-width:640px;margin:0 auto;overflow:hidden;position:absolute;left:0;top:0;}
+
+.btn{display:block;width:8rem;height:2.5rem;border-radius:0.5rem;background-color:#fff;color:#cc3dea;text-align:center;line-height:2.5rem;margin:1rem auto;}
+/*封面*/
+#cover{display:none;position:relative;width:100%;height:52rem;background-color:#9c9c9c;}
+.btnArea{position:absolute;width:100%;left:0;bottom:2rem;}
+#welcome{position:absolute;width:100%;line-height:10rem;font-size:4rem;color:#fff;text-align:center;top:-10rem;-webkit-transition: transform 1.0s;}
+#welcome.show{-webkit-transform:translate3d(0,20rem,0);}
+
+/*场景*/
+.scene{display:none;width:100%;height:100%;overflow:hidden;position:absolute;left:0;top:0;}
+.ele{position:absolute;}
+#gl1,#gl2,#gl3{display:block;width:6rem;height:6rem;background:url(/templates/tls/images/btnGL.png) no-repeat;background-size:100%;}
+#gl1{left:80rem;top:4rem;}
+#gl2{left:90rem;top:4rem;}
+#gl3{left:100rem;top:4rem;}
+#rp1,#rp2,#rp3{display:block;width:6rem;height:6rem;background:url(/templates/tls/images/btnMyRP.png) no-repeat;background-size:100%;left:6rem;top:13rem;}
+#sch1,#sch2,#sch3{display:block;width:6rem;height:6rem;background:url(/templates/tls/images/btnSchedule.png) no-repeat;background-size:100%;left:4rem;top:21rem;}
+
+/*搬家按钮*/
+.btnMove{display:none;position:absolute;width:10rem; height:5rem;border-radius:0.5rem;background-color:#f00;color:#fff;text-align:center;line-height:5rem;font-size:1.4rem;
+bottom:2rem;left:11rem;}
+#btnMove1,#btnMove2{-webkit-animation:scalePlay 2s infinite;}
+
+/*排行榜按钮*/
+#btnRank{display:none;position:fixed;right:1rem;top:1rem;width:6rem;height:6rem;border-radius:50%;background-color:#f00;color:#fff;font-size:1.3rem;
+text-align:center;line-height:6rem;z-index:9;}
+
+
+/*动画*/
+@-webkit-keyframes scalePlay{
+	50%{-webkit-transform:scale(0.5)}
+}
+
+/*遮罩层*/
+.shield{position:absolute;top:0;left:0;z-index:10;display:none;width:100%;background-color:rgba(0,0,0,0.6)}
+.dialog{display:none;position:fixed;width:100%;z-index:11;width:16.5rem;}
+.btnClose{display:block;width:2.8rem;height:3.5rem;background:url(/templates/tls/images/btnClose.png) no-repeat;background-size:2.8rem;
+position:absolute;right:1.5rem;top:-3.5rem;}
+
+/*排行榜*/
+#rankListDialog{background-color:#fff;width:22rem;height:30rem;border-radius:0.8rem;}
+#rankListDialog header#ht{width:100%;line-height:3rem;font-size:1.3rem;text-align:center;}
+#rankList{padding:1rem;background-color:#eee;}
+#rankList li,#myRank li{height:3rem;line-height: 3rem;overflow:hidden;font-size:1rem;margin-bottom:0.5rem;}
+#rankList li *,#myRank li *{float:left;}
+#rankList li span,#myRank li span{display:block;}
+#rankList li img,#myRank li img{display:block;width:3rem;height:3rem;border-radius:50%;margin-left:1rem;}
+#rankList li .rankn,#myRank .rankn{margin-left:0.5rem;width:8rem;height:100%;overflow:hidden;}
+#rankList li .rankscore,#myRank .rankscore{float:right;}
+#myRank{padding:1rem;}
+
+/*登记页*/
+#regDialog{background-color:#fff;width:22rem;height:30rem;border-radius:0.8rem;position:relative;}
+#regDialog header{width:100%;line-height:3rem;font-size:1.3rem;text-align:center;}
+#regDialog .regInputArea{padding:0 1rem;}
+#regDialog .regInputArea input{display:block;height:3rem;line-height:3rem;width:100%;margin-bottom:1rem;font-size:1.2rem;background-color:#fff;outline:none;border:1px solid #ccc;}
+#regDialog .regBtnArea{position:absolute;left:0;bottom:2rem;width:100%;height:3rem;line-height:3rem;}
+#regDialog #btnReg{display:block;width:6rem;height:3rem;margin:0 auto;border-radius:0.5rem;line-height:3rem;text-align:center;
+color:#fff;font-size:1.2rem;background-color:#f00;}

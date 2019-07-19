@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>To-Do</title>
+	<link rel="icon" href="images/logo.ico" type="image/x-icon">
+	<meta charset="UTF-8">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+  	<meta content="yes" name="apple-touch-fullscreen">
+  	<meta content="telephone=no,email=no" name="format-detection">
+  	
+  	<link rel="stylesheet" type="text/css" href="css/public.css">
+  	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div id="app">
+	<todo-menu 
+	:menushow="menuShow" 
+	ref="menu"
+	
+	>
+	</todo-menu>
+	
+	<div class="main" @click="mobileToggleMenu">
+		<div class="tasksToolbar">
+			<div class="tasksToolbar-left">
+				<h2 class="leftBar-title">
+					我的一天
+				</h2>
+				<div class="leftBar-date">
+					{{currentDate.month}}🈷️{{currentDate.day}}日星期{{currentDate.week}}
+				</div>
+			</div>
+			<div class="tasksToolbar-right">
+				<div class="tasksToolbar-actionsItem">
+					<button>
+						<div class="buttonIco">
+							<i  class="iconfont">&#xe600;</i>
+						</div>
+						<span class="buttonWord">排序</span>
+					</button>
+				</div>
+			</div>
+		</div>
+
+
+
+		<div class="container" @contextmenu.prevent> 
+			<div class="layer">
+				<div class="flexBoxFix">
+					<div class="main-background">
+						<div class="tasks">
+							<div class="chunkedComponentList sticky">
+								<div class="chunkedScrollContainer">
+
+									<div class="taskItem-body" 
+										v-for="(todo, index) in todos" 
+										v-bind:class="todo.completed ? 'hasCheck' : 'unCheck'" 
+										v-on:mouseup="showPopover"
+										>
+										<!-- 是否完成 -->
+										<span class="checkBox" 
+											  
+											  v-on:click="toggleCompletion(todo)"
+											  >
+											<i  class="iconfont check"></i>
+										</span>
+										<!-- 任务内容 -->
+										<button class="taskItem-titleWrapper">
+											<span class="taskItem-title"><span><span>{{todo.title}}</span></span></span>
+											<div class="metaDataInfo">
+												<span class="metaDataInfo-group"> 
+													<span class="taskItemInfo-title">
+														<span>任务</span>
+													</span> 
+												</span>
+											</div>
+										</button>
+										<!-- 是否重要 -->
+										<span
+											  v-bind:class="todo.important ? 'isImport' : 'unImport'"
+											  v-on:click="toggleImportant(todo)"
+										>
+											<i  class="iconfont important"></i>
+										</span>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<form v-on:submit.prevent="addTodo(newTodo)">  
+							<div class="baseAdd">
+								<button class="baseAdd-icon" aria-label="添加任务">
+									<i  class="iconfont">&#xe715;</i>
+								</button>
+								<input id="baseAddInput-addTask" 
+									type="text" 
+									class="baseAdd-input chromeless" 
+									maxlength="255" 
+									placeholder="添加任务" 
+									tabindex="-1" 
+									value=""  
+									v-model.trim="newTodo.title" 
+									@blur="addTodo(newTodo)"
+								/>
+							</div>
+						</form>
+						<div class="backgroundLines">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 右键菜单 -->
+	<popover
+	ref="popover"
+	></popover>
+</div>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<script>
+	Vue.component('todoMenu',{
+		props : ['menushow'],
+		data :function (){
+			return {
+				newMenuShow:this.menushow
+			}
+		},
+		methods : {
+			toggleMenu :function (){
+				this.newMenuShow = !this.newMenuShow
+			},
+		},
+		
+		template : 
+		`
+		<div class="sidebar" :class="!newMenuShow ? 'sidebarHide' : '' ">
+			<div class="sidebar-header">
+				<div class="hamburgerMenu" @click="toggleMenu">
+					<i  class="iconfont">&#xe790;</i>
+				</div>
+			</div>
+			<div class="sidebar-main">
+				<div class="list">
+					<div class="item">
+						<span class="ico"><i  class="iconfont">&#xe672;</i></span>
+						<div class="itemName">我的一天</div>
+						<div class="listNum"></div>
+					</div>
+					<div class="item">
+						<span class="ico"><i  class="iconfont">&#xe672;</i></span>
+						<div class="itemName">重要</div>
+						<div class="listNum"></div>
+					</div>
+				</div>
+			</div>	
+		</div>
+		`
+	})
+</script>
+<script>
+	Vue.component('popover',{
+		data:function(){
+			return {
+				popoverShow:0,
+				position :  {
+					top:'',
+					left:'',
+					right:''
+				}
+			}
+		},
+		computed: {
+			classObject: function () {
+				if( this.position.left ){
+					return {
+						top: this.position.top+'px',
+						left: this.position.left+'px',
+					}
+				}else{
+					return  {
+						top: this.position.top+'px',
+						right: this.position.right+'px'
+					}
+
+				}
+			}
+		},
+		template : 
+		`
+		<div class="popover" 
+			:style="classObject"
+			v-show="popoverShow"
+		>
+
+			<button class="popoverMenuItem">
+				<div class="popoverMenuItem-inner">
+					<span class="popoverMenuItem-icon">
+						<i  class="iconfont important">&#xe601;</i>
+					</span>
+					<span class="popoverMenuItem-label">
+						<span>
+							<span>标记为重要</span>
+						</span>
+					</span>
+				</div>
+			</button>
+			<button class="popoverMenuItem">
+				<div class="popoverMenuItem-inner popoverMenuItem-delete">
+					<span class="popoverMenuItem-icon">
+						<i  class="iconfont">&#xe61c;</i>
+					</span>
+					<span class="popoverMenuItem-label">
+						<span>
+							<span>删除所选任务</span>
+						</span>
+					</span>
+				</div>
+			</button>
+		</div>
+		`
+	})
+</script>
+<script type="text/javascript">
+	new Vue({
+        el: '#app',
+        data: {
+			message: 'My Todos',
+            todos: [
+                {id: 1, title: 'Learn Vuejs',completed:true,important:true},
+                {id: 1, title: 'Learn Vuejs123',completed:false,important:true}
+            ],
+			newTodo: {id: null, title: '',completed:false,important:false},
+			menuShow : false,
+			currentDate:{
+				'month':'',
+				'day':'',
+				'week':''
+			},
+        },
+        methods: {
+            addTodo(newTodo){
+				if( !newTodo.title ) return;
+                this.todos.push(newTodo);
+                this.newTodo = {id: null, title: '',completed:false,important:false};
+            },
+            deleteTodo(index){
+                this.todos.splice(index, 1);
+            },
+            toggleCompletion(todo){
+                todo.completed = !todo.completed;
+            },
+            toggleImportant(todo){
+                todo.important = !todo.important;
+			},
+			mobileToggleMenu(){
+				if( this._isMobile() && this.$refs.menu.newMenuShow )
+					this.$refs.menu.toggleMenu()
+				this.$refs.popover.popoverShow = 0
+			},
+			//判断是否为手机or手机型号
+			_isMobile() {
+				let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+				return flag;
+			},
+			//初始化时间
+			initTime(){
+				let arr = ['日', '一', '二', '三', '四', '五', '六'],
+        			time = new Date();
+        			this.currentDate.month = Number(time.getMonth())+Number(1)
+        			this.currentDate.day = time.getDate()
+					this.currentDate.week = arr[time.getDay()]
+			},
+			//接受由子组件传递过来的参数，并改变父组件中的数值
+			parentFn( arg ) {
+				console.log(arg);
+				this.msg = arg
+			},
+			//显示右键菜单
+			showPopover(event){
+				if( event.button != 2 ) return this.$refs.popover.popoverShow = 0
+				
+				//当前点击的列表 taskItem-body
+				let currentItem = event.target.offsetParent
+				currentItemWidth = window.getComputedStyle(currentItem).width 
+				popoverWidth = 150
+				//如果当前屏幕中的任务宽度小于右键菜单栏的宽度，则不显示菜单栏
+				if(currentItemWidth < popoverWidth )return ;
+				//如果点击的x轴位置会使菜单栏超出屏幕内，则菜单栏的位置则为right:0px
+				if( ( parseInt(currentItemWidth)+70 - parseInt(event.screenX) ) < 150 ){
+					this.$refs.popover.position.right = 0
+					this.$refs.popover.position.left = 0
+				}else{	
+					this.$refs.popover.position.left = event.screenX
+					this.$refs.popover.position.right = ''
+				}
+				this.$refs.popover.position.top = event.clientY
+				//显示右键菜单
+				this.$refs.popover.popoverShow = 1
+			},
+		},
+		mounted(){
+			this.initTime()
+		},
+		
+    });
+</script>
+<!-- <script type="text/javascript" src="js/index.js"></script> -->
+</body>
+</html>

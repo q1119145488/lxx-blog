@@ -1,0 +1,20 @@
+{include file="public/header" /}
+
+    <div role="main" class="main">
+      <a href="#nav" class="nav-toggle">Menu</a>
+
+		<h3>留言名呢：{$detail.name}</h3>
+		<h3>留言邮箱：{$detail.email}</h3>
+		<h3>留言时间：{$detail.time|date="Y-m-d H:i:s",###}</h3>
+		<h3>留言内容：</h3>
+		<div>
+			{$detail.content|htmlspecialchars_decode}
+		</div>
+
+    </div>
+
+    <script>
+      var navigation = responsiveNav("foo", {customToggle: ".nav-toggle"});
+    </script>
+  </body>
+</html>

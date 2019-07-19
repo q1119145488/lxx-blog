@@ -1,0 +1,25 @@
+* * {margin:0;padding:0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;}
+#bg{
+	height: 1020px;
+	background: url(../images/scene3bg.jpg);
+	background-repeat: no-repeat;
+
+}
+#home{
+	background: url(../images/home3.png) no-repeat;
+	width:640px;
+	height: 1083px;
+
+	background-position:-5120px 0;
+	-webkit-animation:backHome 3.2s steps(8);
+	animation-fill-mode: forwards;
+}
+@keyframes backHome{
+	100%{
+		background-position:0 0;
+	}
+}

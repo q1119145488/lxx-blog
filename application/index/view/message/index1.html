@@ -1,0 +1,153 @@
+{include file="public/header" /}
+
+
+	<div class="post">
+    	<h3>MESSAGE</h3><hr/>
+        
+        <div class="panel panel-default ">
+            <div class="panel-heading" style="background-color: #2b579a;color:#fff">
+                <h3 class="panel-title">
+                    MESSAGE&nbsp;BOARD
+                </h3>
+            </div>
+            
+            <form class="panel-body message" method="post" action="{:url('message/index')}">
+                <div class="form-group">
+            	   <input type="text" name="name" placeholder="Your name" style="margin-right:10%;" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="email" placeholder="Your useful email"  class="form-control" id="email"/>
+                </div>
+                <div class="form-group">
+				    <textarea id="editor" placeholder="Balabala" name="content"></textarea>
+                </div>
+                <div class="form-group">
+                    <img class="captcha"  src="{:url('Message/getCaptcha')}"></img>
+                </div>
+                <div class="form-group">
+                    <input  name="captcha" class="form-control" id="captchaInput"></input>
+                </div>
+                <span class="glyphicon glyphicon-ok" id="verifyRight"></span>
+                <span class="glyphicon glyphicon-remove" id="verifyWrong"></span>
+
+                <button type="submit" class="btn btn-success btn-block glyphicon glyphicon-send" >&nbsp;submit</button>
+            </form>
+        </div>
+    <div id="message-list">
+
+    {volist name="message" id="vo"}
+        <div class="list">
+
+            <div class="avatar">{$vo.name|mb_substr=0,1,'utf-8'}</div><!--avatar-->
+
+                <div class="right-part">
+                    <div class="">
+                        <div class="panel panel-default comment-item">
+
+                            <div class="panel-heading">
+
+                                <strong>&nbsp;&nbsp;&nbsp;&nbsp;{$vo.name}</strong>
+
+                                <span class="text-muted pull-right"> {$vo['time']|date="Y-m-d H:i:s",###}</span>
+                            </div><!--panel-heading-->
+                            <div class="panel-body">
+                               {$vo.content|html_entity_decode}
+                            </div><!--panel-body-->
+
+                        </div><!--panel panel-default comment-item-->
+                    </div><!--right-part-->
+
+                </div><!--message-list-->
+        </div><!--list-->
+    {/volist}
+
+    </div><!--message-list-->
+    </div><!--post-->
+    
+{include file="public/about-me" /}
+    
+
+
+</div><!--main-->
+
+
+            <script>
+         var editor = new Simditor({
+            textarea: $('#editor'),
+                //optional options
+
+
+
+                     toolbar:[  'image','emoji'],
+
+
+
+            emoji: {
+                imagePath: '{:url('/')}public/images/emoji/'
+            },
+            upload : {
+                url : '{:url('api/upload/imageUpload')}', //文件上传的接口地址
+                //params: null, //键值对,指定文件上传接口的额外参数,上传的时候随文件一起提交
+                fileKey: 'images', //服务器端获取文件数据的参数名
+                connectionCount: 3,
+                leaveConfirm: '正在上传文件'
+         }
+           });
+              
+          </script>    
+
+
+          <script>
+
+         $(function () {
+            $('form').bootstrapValidator({
+    　　　　　　　　message: 'This value is not valid',
+                　feedbackIcons: {
+                    　　　　　　　　valid: 'glyphicon glyphicon-ok',
+                    　　　　　　　　invalid: 'glyphicon glyphicon-remove',
+                    　　　　　　　　validating: 'glyphicon glyphicon-refresh'
+                　　　　　　　　   },
+                fields: {
+                    name: {
+                        message: '标题验证失败',
+                        validators: {
+                            notEmpty: {
+                                message: '名字不能为空'
+                            }
+                        }
+                    },
+                    email: {
+                        validators: {
+                            notEmpty: {
+                                message: '邮箱地址不能为空'
+                            },
+                            emailAddress: {
+                                message: '邮箱地址格式有误'
+                            }
+                        }
+                    },
+
+                     content: {
+                        message: '内容验证失败',
+                        validators: {
+                            notEmpty: {
+                                message: '内容不能为空'
+                            }
+                        }
+                    }
+
+
+                },
+                submitHandler: function (validator, form, submitButton) {
+                alert("submit");
+                }
+            });
+        });
+      </script>   
+        <script src="{:url('/')}__STATIC__/js/api.js"></script>
+
+
+
+</body>
+		
+</html>

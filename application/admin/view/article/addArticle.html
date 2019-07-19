@@ -1,0 +1,126 @@
+{include file="public/header" /}
+
+    <div role="main" class="main">
+      <a href="#nav" class="nav-toggle">Menu</a>
+        <h3>Add Article</h3>
+          <form action="{:url('article/addArticle')}" method="post" >
+              <div class="form-group">
+          		    <input type="text" name="title" placeholder="标题" autofocus class="form-control" id="title"></input>
+              </div>
+              <br/>
+              <div class="form-group">
+                 <textarea   name="description" style="width: 50%" placeholder="描述" rows="3" class="form-control" id="description"></textarea><br/>
+              </div>
+
+
+               <div id="editor">
+                  <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+              </div>
+
+
+
+                <div style="width: 10%">
+                    <span>分类</span>
+                    <select name="category" class="form-control" id="category">
+                        <option value ="code">code</option>
+                          <option value ="read">read</option>
+                          <option value="life">life</option>
+                    </select>
+                </div>
+
+                <br/>
+               	<input type="text" id="tags" placeholder="标签" class="form-control" style="width: 10%;float: left;" />
+                <a id="tagsSubmit" class="btn btn-success btn-block">添加</a>
+                <a id="tagsRemove" class="btn btn-success btn-block">移除</a>
+                <br/><br/>
+                <br/><br/>
+                 <span>标签</span> <span class="tags_id"></span><br/>
+                 <label class="tagsList">
+
+
+                 </label>
+                <input  class="btn btn-primary submit" value="发表" style="width: 100px;float: right"/>
+          </form>
+
+    </div>
+
+    <script>
+      var navigation = responsiveNav("foo", {customToggle: ".nav-toggle"});
+    </script>
+    
+      <script>
+          var SCOPE = {
+                    'tagsAdd' : '{:url('api/article/tags')}',
+                    'tagsRemove' : '{:url('api/article/tagsRemove')}',
+
+          };
+      </script>
+      <script>
+
+         $(function () {
+            $('form').bootstrapValidator({
+    　　　　　　　　message: 'This value is not valid',
+                　feedbackIcons: {
+                    　　　　　　　　valid: 'glyphicon glyphicon-ok',
+                    　　　　　　　　invalid: 'glyphicon glyphicon-remove',
+                    　　　　　　　　validating: 'glyphicon glyphicon-refresh'
+                　　　　　　　　   },
+                fields: {
+                    title: {
+                        message: '标题验证失败',
+                        validators: {
+                            notEmpty: {
+                                message: '标题不能为空'
+                            }
+                        }
+                    },
+                    description: {
+                        validators: {
+                            notEmpty: {
+                                message: '描述不能为空'
+                            }
+                        }
+                    },
+
+                     content: {
+                        message: '内容验证失败',
+                        validators: {
+                            notEmpty: {
+                                message: '内容不能为空'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+      </script>
+      <script type="text/javascript" src="{:url('/')}__STATIC__/js/wangEditor.min.js"></script>
+    <script type="text/javascript">
+        var E = window.wangEditor
+        var editor = new E('#editor')
+        editor.customConfig.uploadImgServer = "{:url('api/upload/wangImageUpload')}";
+        editor.customConfig.uploadFileName = 'image';
+        editor.customConfig.debug = true;
+        editor.customConfig.uploadImgMaxSize = 20 * 1024 * 1024;
+        editor.customConfig.uploadImgTimeout = 1000000;
+        editor.create()
+    </script>
+    <script type="text/javascript">
+      $(".submit").click(function(){
+          var title = $("#title").val(),
+              description = $("#description").val(),
+              content = editor.txt.html(),
+              category = $("#category").val();
+          $.ajax({
+           type: "POST",
+           url: "{:url('api/article/addArticle')}",
+           data: {'title':title,'description':description,'content':content,'category':category},
+           success: function(data){
+                alert(data.msg);
+            }
+        });
+          
+      });
+    </script>
+  </body>
+</html>

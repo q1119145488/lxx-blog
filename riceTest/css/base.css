@@ -1,0 +1,16 @@
+html{height:100%;}
+* * {margin:0;padding:0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;}
+body {font-family:"Microsoft YaHei";height:100%;}
+a {text-decoration:none;}
+.fl{float:left;}
+.fr{float:right}
+.cl{clear: both;visibility:hidden;height:0;line-height:0;content:'';}
+.clearfix{clear:both;}
+ul,li{list-style:none;}
+.m{width:100%;max-width:540px;margin: 0 auto;height:auto;min-height:100%;}
+/*文本溢出显示方式*/
+.tof{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}

@@ -1,0 +1,93 @@
+{include file="public/header" /}
+
+    <div role="main" class="main">
+      <a href="#nav" class="nav-toggle">Menu</a>
+        <h3>Edit Article</h3>
+          <form action="{:url('article/editArticle')}" method="post">
+          		<input type="text" name="title" placeholder="标题" autofocus value="{$Article.title}"  id="title"></input><br/>
+              <textarea   name="description" style="width: 50%" placeholder="描述" rows="3" id="description">{$Article.description}</textarea><br/>
+              <div id="editor">
+                  <p><?php echo htmlspecialchars_decode($Article['content']);?></p>
+              </div>
+
+              <br/>
+                <div style="margin-top:20px;width: 10%">
+                    <span></span>
+                    <select name="category" class="form-control" id="category">
+                        <option value ="code" {eq name="$Article.category" value="code"}selected = "selected" {/eq} >code</option>
+                          <option value ="read"  {eq name="$Article.category" value="read"}selected = "selected" {/eq} > read</option>
+                          <option value="life"  {eq name="$Article.category" value="life"}selected = "selected" {/eq} >life</option>
+                    </select>
+                </div>
+                <br/>
+               	<input type="text" name="tags" id="tags" value="" style="width: 10%;float: left;"/>
+                <a id="tagsSubmit" class="btn btn-success btn-block">添加</a>
+                <a id="tagsRemove" class="btn btn-success btn-block">移除</a>
+                <br/><br/> <br/><br/>
+                <span>标签</span> <span class="tags_id">
+                  {volist name="tags" id="vo2"}
+                  <a class='btn btn-success'>{$vo2.tags}</a>
+                    
+                  {/volist}
+                </span>
+                 <label class="tagsList">
+                 {volist name="tags" id="vo2"}
+                  <input name="tag[]" type="hidden"  value="{$vo2.tags}" class="tags"/>
+                  {/volist}
+                 </label>
+                 
+                <br/><br/>
+            
+                <input type="hidden" name="id" value="{$Article.id}">
+                <input  class="btn btn-primary submit" value="发表" style="width: 100px;margin-top: 10px;float: right"/>
+          </form>
+
+    </div>
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/date.js"></script>
+    <script>
+      var navigation = responsiveNav("foo", {customToggle: ".nav-toggle"});
+    </script>
+
+         <script type="text/javascript" src="{:url('/')}__STATIC__/js/wangEditor.min.js"></script>
+          <script type="text/javascript">
+              var E = window.wangEditor
+              var editor = new E('#editor')
+              editor.customConfig.uploadImgServer = "{:url('api/upload/wangImageUpload')}";
+              editor.customConfig.uploadFileName = 'image';
+              editor.customConfig.debug = true;
+              editor.customConfig.uploadImgMaxSize = 20 * 1024 * 1024;
+              editor.customConfig.uploadImgTimeout = 1000000;
+              editor.create()
+          </script>
+
+      <script>
+          var SCOPE = {
+                    'tagsAdd' : '{:url('api/article/tags')}',
+                    'tagsRemove' : '{:url('api/article/tagsRemove')}',
+
+          };
+      </script>
+
+      <script type="text/javascript">
+      $(".submit").click(function(){
+          var id = "{$Article.id}",
+              title = $("#title").val(),
+              description = $("#description").val(),
+              content = editor.txt.html(),
+              category = $("#category").val();
+          $.ajax({
+           type: "POST",
+           url: "{:url('api/article/editArticle')}",
+           data: {'id':id,'title':title,'description':description,'content':content,'category':category},
+           success: function(data){
+                alert(data.msg);
+                if(data.code == 1001){
+                  window.location.reload();
+                }
+            }
+        });
+          
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+{include file="public/header" /}
+
+    <div role="main" class="main">
+      <a href="#nav" class="nav-toggle">Menu</a>
+		<h3>Article List</h3>
+		<table  class="table table-hover">
+			<thead>
+				  <tr>
+				    <th scope="col" width="70">ID</th>
+				    <th scope="col"  width="70">点击量</th>
+				    <th scope="col" width="400">标题</th>
+				    <th scope="col" width="150">日期</th>
+				    <th scope="col" width="70">状态</th>
+				    <th scope="col" width="70">操作</th>
+				  </tr>
+		  </thead>
+		  <tbody>
+			{volist name="Article" id="vo"}
+			  <tr>
+			    <td>{$vo.id}</td>
+			    <td>{$vo.clickNums}</td>
+			    <td>{$vo.title}</td>
+			    <td>{$vo['time']|date="Y-m-d H:i:s",###}</td>
+			    <td>{$vo.status|status}</td>
+			    <td>
+			    	{if condition = "( $vo.status == 1 )"}
+			    	<a href="{:url('article/editArticle',['id' => $vo.id ] )}">编辑</a>
+			    	<a href="{:url('article/status',['id' => $vo.id,'status' => '0' ] )}">删除</a>
+			    	{else /}
+			    	<a href="{:url('article/editArticle',['id' => $vo.id ] )}">编辑</a>
+			    	<a href="{:url('article/status',['id' => $vo.id,'status' => '1' ] )}">还原</a>
+			    	{/if}
+			    </td>
+			  </tr>
+			{/volist}
+		</tbody>
+		
+		</table>
+		{:pagination($Article)}
+    </div>
+
+    <script>
+      var navigation = responsiveNav("foo", {customToggle: ".nav-toggle"});
+    </script>
+  </body>
+</html>

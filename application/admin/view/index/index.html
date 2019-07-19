@@ -1,0 +1,37 @@
+{include file="public/header" /}
+       <div role="main" class="main">
+          <a href="#nav" class="nav-toggle">Menu</a>
+          <br/>
+          <h4>今日访问({$todayPv}),历史访问({$allPv})</h4>
+          <h3>访问记录</h3>
+          <table  class="table table-hover">
+            <thead>
+                <tr>
+                  <th scope="col" width="70">ip</th>
+                  <th scope="col" width="100">设备</th>
+                  <th scope="col" width="70">访问时间</th>
+                  <th scope="col" width="70">IP</th>
+                </tr>
+            </thead>
+            <tbody>
+              {volist name="pv" id="vo"}
+              <?php $time = date('Y-m-d',strtotime($vo['create_time']));?>
+
+              <tr <?php if( date("Y-m-d",time())  == $time) echo "style='background-color:#cbeae2' ";?> >
+                  <td>{$vo.ip}</td>
+                  <td>{$vo.device}</td>
+                  <td>{$vo.create_time}</td>
+                  <td></td>
+              </tr>
+              {/volist}
+            </tbody>
+          
+          </table>
+          {:pagination($pv)}
+          
+      </div>
+    <script>
+      var navigation = responsiveNav("foo", {customToggle: ".nav-toggle"});
+    </script>
+  </body>
+</html>

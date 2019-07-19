@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{$title}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--[if lte IE 8]><link rel="stylesheet" href="responsive-nav.css"><![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="{:url('/')}__STATIC__/css/styles.css"><!--<![endif]-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+    
+     <link rel="stylesheet" href="{:url('/')}__STATIC__/css/simditor.css">
+      <link rel="stylesheet" href="{:url('/')}__STATIC__/css/bootstrapValidator.css">
+
+       <link rel="stylesheet" href="{:url('/')}__STATIC__/css/layer.css">
+    <link rel="icon" href="{:url('/')}__STATIC__/images/favicon.ico">
+    
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+</script>
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/api.js"></script>
+    <script src="{:url('/')}__STATIC__/js/responsive-nav.js"></script> 
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/module.min.js"></script>
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/hotkeys.min.js"></script>
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/uploader.min.js"></script>
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/simditor.min.js"></script>
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/bootstrapValidator.js"></script>
+
+
+        <script>
+          $(document).ready(function(){
+
+            $("#article").click(function(){
+              $("#AddArticle").toggle(500);
+              $("#ArticleList").toggle(500);
+            });
+            $("#Message").click(function(){
+              $("#MessageList").toggle(500);
+            });
+             $("#Diary").click(function(){
+              $("#DiaryTree").toggle(500);
+            });
+
+          });
+        </script>
+      
+        <style>
+        .nav-collapse ul{height:250px;}
+          #AddArticle,#ArticleList,#MessageList,#DiaryTree{display:none;}
+        }
+        </style>
+
+
+  </head>
+    <body>
+
+    <div role="navigation" id="foo" class="nav-collapse">
+      <ul>
+        <li {eq name="$controller" value="index" } class="active" {/eq}><a href="{:url('index/index')}">Home</a></li>
+        <li {eq name="$controller" value="article" } class="active" {/eq} id="article"><a>Article</a></li>
+                <li id="ArticleList" style="margin-left:20px;"><a href="{:url('article/index')}">article list</a></li>
+                <li id="AddArticle" style="margin-left:20px;"><a href="{:url('article/addArticle')}">add article</a></li>
+        <li {eq name="$controller" value="message" } class="active" {/eq} id="Message"><a >Message</a></li>
+            <li id="MessageList" style="margin-left:20px;"><a href="{:url('message/index')}">MessageList</a></li>
+
+	     <li {eq name="$controller" value="Diary" } class="active" {/eq} id="Diary"><a >Diary</a></li>
+            <li id="DiaryTree" style="margin-left:20px;"><a href="{:url('Diary/index')}">DiaryTree</a></li>
+      </ul>
+      <h5>
+      <a href="{:url('index/index/index')}">查看站点</a>
+      <a href="{:url('login/logout')}">退出登录</a>
+      </h5>
+
+    </div>

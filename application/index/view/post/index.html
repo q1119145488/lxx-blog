@@ -1,0 +1,93 @@
+{include file="public/header" /}
+ <script src="https://cdn.bootcss.com/twitter-bootstrap/2.3.1/js/bootstrap-modal.js"></script>
+	<div class="post">
+    	<h3>{$post.title}</h3><hr/>
+        
+
+        <div class="article">
+        	<div class="timeBar">{$post.time|date="Y-m-d H:i:s",###} (UTC +8:00)</div>
+            <br/>
+            <div class="content">
+                {$post.content|html_entity_decode}
+            </div>
+            <hr/>
+            <div style="clear: both"></div>
+        </div><!--article-->
+
+        <div class="pull-left " >
+            <span id="remind"></span>
+        </div>
+        <div class="pull-right" >
+            <button class="btn icon-btn btn-success btn-ratings" id="like">
+                <span class="glyphicon glyphicon-thumbs-up">
+                {if condition="$likeNum eq '0'"}
+                {else / }{$likeNum}{/if}
+                </span>
+            </button>
+            <button class="btn icon-btn btn-primary icon-qrcode" data-toggle="modal" data-target="#qrcode-window" id="QRcode">
+                <span class="glyphicon glyphicon-qrcode"></span>   
+                QR Code
+            </button>
+        </div>
+    </div><!--post-->
+    
+    {include file="public/about-me" /}
+    {include file="public/tags" /}
+</div><!--main-->
+
+<div class="footer">
+	
+</div><!--footer-->
+<div id="qc_alert"><!-- 弹窗背景-变暗 -->
+    <div class="alert_content">
+        <div class="modal-header">
+            <div class="modal-title" id="qrcodewindowLabel">{$post.title}</div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal-body">
+                <div class="text-center">
+                    <p class="text-center">
+                        Scan QR Code on your phone
+                    </p>
+                    <div id="qrcode">
+                        <img src="{$post.qrcode}">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+            </div>
+    </div>
+</div>
+<script>
+ $(document).ready(function(){
+  $("#like").click(function(){
+    $(this).addClass('disabled');
+
+  });
+});
+$("#QRcode").click(function(){
+    $("#qc_alert").show();
+})
+$(".close").click(function(){
+    $("#qc_alert").hide();
+});
+$(document).mouseup(function(e){
+  var _con = $('.alert_content ');   // 设置目标区域
+  if(!_con.is(e.target) && _con.has(e.target).length === 0){ // Mark 1
+    $("#qc_alert").hide();
+  }
+});
+var SCOPE = {
+    'like' : '{:url('api/index/like')}',
+    'articleId' : ' {$post.id} ',
+
+};
+</script>
+ <script type="text/javascript" src="{:url('/')}__STATIC__/js/api.js"></script>
+
+
+</body>
+</html>

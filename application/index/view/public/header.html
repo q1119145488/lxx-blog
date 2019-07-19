@@ -1,0 +1,114 @@
+
+ <!-- ----------------------------------------
+    llll        xxxx       xxxx               xxxx       xxxx 
+    llll         xxxx     xxxx                 xxxx     xxxx   
+    llll          xxxx   xxxx                   xxxx   xxxx
+    llll              xxxx                          xxxx
+    llll          xxxx   xxxx                   xxxx   xxxx
+    llllllll     xxxx     xxxx                 xxxx     xxxx
+    llllllll    xxxx       xxxx               xxxx       xxxx
+
+
+ ---------------------------------------- -->
+<!DOCTYPE html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta name="baidu-site-verification" content="Cagczqo7As" />
+<meta name="keywords" content="刘先享,LXX,lxx,GoAheadLxx,goaheadlxx">
+<meta name="description" content="刘先享|LXX的个人博客,LXX,GoAheadLxx,goaheadlxx">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script language=javascript> 
+ if (document.domain =='goaheadlxx.top')
+     this.location = "https://www.goaheadlxx.top" + this.location.pathname + this.location.search;
+
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{:url('/')}__STATIC__/images/favicon.ico">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{:url('/')}__STATIC__/css/bootstrap-edit.css"/>
+    <link rel="stylesheet" type="text/css" href="{:url('/')}__STATIC__/css/index.css"/>  
+    
+
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+<title>{$title}</title>
+
+    <script src="{:url('/')}__STATIC__/js/search.js"></script>
+    <script src="{:url('/')}__STATIC__/js/responsive-nav.js"></script> 
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {if condition="$controller eq 'message'"}
+    
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/module.min.js"></script>
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/hotkeys.min.js"></script>
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/uploader.min.js"></script>
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/simditor.min.js"></script>
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/simditor-emoji.js"></script>
+    <script type="text/javascript" src="{:url('/')}__STATIC__/js/bootstrapValidator.js"></script>
+    <link rel="stylesheet" href="{:url('/')}__STATIC__/css/bootstrapValidator.css"/>
+    <link rel="stylesheet" href="{:url('/')}__STATIC__/css/simditor.css"/>
+    <link rel="stylesheet" href="{:url('/')}__STATIC__/css/simditor-emoji.css"/>
+    {/if}
+    
+
+   
+
+</head>
+
+<body>
+
+<nav class="nav navbar-inverse navbar-fixed-top" role="navgation">  
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="{:url('/')}" class="navbar-brand">
+                GOAheadLxx
+            </a>
+
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav nav">
+                <li class="active"><a href="{:url('index/index')}">POSTS </a></li>
+                <li><a href="{:url('read/index')}">READ</a></li>
+                <li><a href="{:url('life/index')}">LIFE</a></li>
+                <li><a href="{:url('message/index')}">MESSAGE</a></li>
+                <li><a href="{:url('about/index')}">ABOUT</a></li>
+            </ul>
+            <form action="{:url('search/index')}" method="get" class="navbar-form navbar-right" id="search" style="margin-right: 7%;">
+                <input type="text" class="form-control" name="keyword" placeholder="请输入搜索内容" autocomplete="off"/>
+                <button class="glyphicon glyphicon-search" style="background-color:#5CB85C;margin-right: 30px;height:33px;color:#fff;border:0 none;">search</button>
+                <div class="search-remind">
+                    <ul>
+                        <li>搜索结果</li>
+                    </ul>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</nav>
+
+<div class="main">
+    <div class="about-me-moblie">
+        <a href="{:url('about/index')}">
+            <div class="pic">
+                    <img src="{:url('/')}__STATIC__/images/LXX.jpg"></img>
+            </div>
+            <h3 align="center"> PHP&WEB&nbsp;DEVELOPER</h3>
+        </a>
+    </div>
+<script>
+          var SCOPE = {
+                    'search' : '{:url('api/index/search')}',
+                    'captcha' : '{:url('api/Message/captcha')}'
+          };
+</script>

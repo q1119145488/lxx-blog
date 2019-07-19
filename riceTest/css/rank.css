@@ -1,0 +1,191 @@
+/*html{height:100%;background-color:#000;}*/
+/*@font-face{*/
+    /*font-family:'hyhlz';*/
+    /*src:url("/res/fonts/hyhlz.ttf") format('truetype');*/
+/*}*/
+
+.win-rank {position: absolute;left: 0;top: 0;width: 100%;height: 100%;max-width:640px;background: rgba(0,0,0,0.85);display: none;/* overflow: hidden; */z-index: 999;}
+
+.win-rank .current {
+    position: fixed;
+    top: 50%;
+    right: -115px;
+    width: 330px;
+    height: 97px;
+    margin-top: -49.5px;
+    background: url(../images/currentRank.png) no-repeat;
+    background-size: 100%;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+    /* margin: 0 0 0 -165px; */
+    display: none;
+    -webkit-transform: rotate(90deg);
+}
+.win-rank .current .cur-rank {width: 330px;height: 40px;line-height: 30px;margin: 8px 0 0 0;}
+.win-rank .current .cur-grow {width: 330px;height: 40px;line-height: 30px;}
+.win-rank .rank-close {
+    position:absolute;
+    top: 70px;
+    left: 55%;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+    -webkit-justify-content: center;
+    margin: 20px 0 0 215px;
+    }
+.win-rank .rank-close .btn{display: inline-block; width: 35px;height: 3px; background: #ffffff;line-height: 0;font-size:0;-webkit-transform: rotate(45deg);}
+.win-rank .rank-close .btn:after{content:'/';display:block;width: 35px;height: 3px; background: #ffffff;-webkit-transform: rotate(-90deg);}
+.win-rank .rank {position: absolute;top: 30px;left: 20px;bottom: 0;width: 100%;text-align: center;color: #5b3124;/* overflow-y: unset; */}
+
+.win-rank .rank .top {position:relative;width: 470px;height: 102px;background: url("../images/rank_title.png") no-repeat;background-size: 100%;margin: 0 auto 0 auto;}
+.win-rank .rank .content {
+    width: 453px;
+    height: -moz-calc(100% - 64px);
+    /* height: -webkit-calc(100% - 64px); */
+    height: calc(100% - 64px);
+    background: #5e2121;
+    margin: -60px auto 0 auto;
+    border-radius: 20px 20px 0 0;
+    padding: 5px 0 0 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    margin-left: 65px;
+}
+.win-rank .rank .content .contain {
+    width: 439px;
+    /* height: 100%; */
+    border-left: 4px solid #df3a39;
+    border-top: 4px solid #df3a39;
+    border-right: 4px solid #df3a39;
+    border-radius: 20px 20px 0 0;
+    padding: 20px 0 0 0;
+    background: #fbe2b2;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.win-rank .rank .content .list {
+    width: 411px;
+    height: 499px;
+    margin: 0 auto 0 auto;
+    padding: 20px 0 0 0;
+    background: #f7d799;
+    border-radius: 20px 20px 0 0;
+    margin-top: 40px;
+}
+.win-rank .rank .content .list .head {
+    width: 466px;
+    height: 80px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0 auto 0 auto;
+    border-bottom: 1px solid #5b3124;
+    -webkit-transform: rotate(90deg);
+    margin-left: 150px;
+    margin-top: 190px;
+}
+.win-rank .rank .content .list .head .parent {width: 30%;height: 40px;line-height: 40px;text-align: center;}
+.win-rank .rank .content .list .head .grow {width: 30%;height: 40px;line-height: 40px;text-align: center;}
+.win-rank .rank .content .list .head .reward {width: 40%;height: 40px;line-height: 40px;text-align: center;}
+.win-rank .rank .content .list .items {
+    width: 100%;
+    height: -moz-calc(100% - 80px);
+    height: -webkit-calc(100% - 80px);
+    height: calc(100% - 80px);
+    /* overflow-y: scroll; */
+    -webkit-transform: rotate(90deg);
+    margin-top: -260px;
+    /* margin-right: 300px; */
+    padding-top: 60px;
+}
+.win-rank .rank .content .list .items .item {
+    width: 95%;
+    height: 75px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    -webkit-align-items: center;
+    -webkit-justify-content: space-around;
+    font-size: 22px;
+    margin: 10px auto 10px auto;
+}
+.win-rank .rank .content .list .items .item .parent {
+    width: 30%;
+    height: 75px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-flex-wrap: wrap;
+    -webkit-box-lines: multiple;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.win-rank .rank .content .list .items .item .parent img {width: 45px;height: 45px;border: 2px solid #5b3124;border-radius: 50%;}
+.win-rank .rank .content .list .items .item .parent span {width: 100%;height: 20px;/* line-height: 30px; *//* overflow: hidden; */text-overflow:ellipsis;white-space: nowrap;font-size: 20px;}
+.win-rank .rank .content .list .items .item .grow {width: 30%;height: 90px;line-height: 90px;font-size: 23px;}
+.win-rank .rank .content .list .items .item .reward {
+    width: 40%;
+    height: auto;
+    line-height: 20px;
+    font-size: 20px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -webkit-flex-wrap: wrap;
+    -webkit-box-lines: multiple;
+    -moz-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.win-rank .showAdd {
+    position: fixed;
+    left: 135px;
+    top: 50%;
+    width: 68px;
+    height: 226px;
+    background: url(../images/invite.png);
+    background-size: 100%;
+    margin: -113px 0 0 -130px;
+    display: none;
+}
+.share {position: absolute;left: 0;top: 0;width: 100%;height: 100%;z-index: 1000;background: rgba(0,0,0,0.85);display: none;justify-content: center;-webkit-justify-content: center;}
+.share img {width: 554px;height: 358px;}
+

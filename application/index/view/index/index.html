@@ -1,0 +1,78 @@
+{include file="public/header" /}
+    
+	<div class="post">
+    	   <h3>ALL POSTS<span class="badge">{$articleNum}</span></h3><hr/>
+        
+        {volist name="Article" id="vo"}
+        <div class="article">
+        	<div class="article-date">
+            	<div class="article-date-day">{$vo.time|date = 'd',###}</div><!--article-date-day-->
+            	<div class="article-date-month">{$vo.time|date = 'M',###}</div><!--article-date-month-->
+            </div><!--article-date-->
+            
+            <div class="description">
+                <h4 class="article-title">
+                    <a href="{:url('post/index', ['id' => $vo.id ]) }">{$vo.title}</a>
+                </h4>
+                
+                <div class="sumary">
+                    {$vo.description}...
+                </div><!--sumary-->
+                
+                <div class="tags">
+                {volist name = "tags" id = "vo1"}
+                	
+                    {eq name ="$vo.id" value="$vo1.articleId"} <a href="{:url('tags/index',['tag'=>$vo1.tags])}">{$vo1.tags}</a>{/eq}
+                    
+                {/volist}
+
+                </div>
+            </div><!--description-->
+            <hr/>
+            <div style="clear: both"></div>
+        </div><!--article-->
+        {/volist}
+        {:pagination($Article)}
+         
+        
+    </div><!--post-->
+    
+    {include file="public/about-me" /}
+    {include file="public/tags" /}
+    
+
+    <div class="top">
+        <img src="{:url('/')}__STATIC__/images/top1.jpg"></img>
+    </div>
+</div><!--main-->
+
+<div class="footer">
+	
+</div><!--footer-->
+
+<script>
+$(function(){
+ 
+         $('.top').hide();        //隐藏go to top按钮
+ 
+         $(window).scroll(function(){
+            // console.log($(this).scrollTop());
+ 
+            //当window的scrolltop距离大于1时，go to 
+             if($(this).scrollTop() > 100){
+                $('.top').fadeIn();
+
+             }else{
+                 $('.top').fadeOut();
+            }
+         });
+ 
+         $('.top').click(function(){
+             $('html ,body').animate({scrollTop: 0}, 300);
+        });
+ 
+
+     });
+</script>
+</body>
+</html>

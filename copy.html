@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>copy</title>
+    
+</head>
+<body>
+<button class="btn" data-clipboard-text="Just because you 
+can doesn't mean you should 
+— clipboard.js">
+
+    Copy to clipboard
+
+</button>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+
+<script type="text/javascript">
+
+var clipboard = new ClipboardJS('.btn');
+clipboard.on('success', function(e) {
+    console.info('Action:', e.action);
+    console.info('Text:', e.text);
+    console.info('Trigger:', e.trigger);
+    alert('复制成功');
+    e.clearSelection();
+});
+
+clipboard.on('error', function(e) {
+    console.error('Action:', e.action);
+    console.error('Trigger:', e.trigger);
+});
+</script>
+</html>

@@ -1,0 +1,118 @@
+{include file="public/header" /}
+
+
+    <div role="main" class="main">
+      <a href="#nav" class="nav-toggle">Menu</a>
+			<div class="update-tree">
+				<button class="btn icon-btn btn-success btn-ratings" id="addButton">
+					<span class="glyphicon glyphicon-plus-sign"> 添加</span>
+				</button>
+				<input id="addDiary" ></input>
+				<a id="submit">提交</a>
+				<a id="cancel">取消</a>
+                    <ul>
+                        {volist name="diary" id="vo"}
+                        <li class="allDiary">
+                        	<span class="time">{$vo.time|date="m-d",###}</span>
+							<span class="diary" id="{$vo.id}" >{$vo.diary}&nbsp;<a class="diary-delete">删除</a></span>
+                        </li>
+						{/volist}
+                    </ul>
+                </div><!-- update-tree -->
+    </div><!-- main -->
+
+    <script>
+      var navigation = responsiveNav("foo", {customToggle: ".nav-toggle"});
+
+       $(document).ready(function(){
+
+            $("#addButton").click(function(){
+              $("#addDiary").toggle(500);
+              $("#submit").toggle(500);
+              $("#cancel").toggle(500);
+              $("#addButton").toggle(500);
+            });
+            $("#cancel").click(function(){
+              $("#addDiary").toggle(500);
+              $("#submit").toggle(500);
+              $("#cancel").toggle(500);
+              $("#addButton").toggle(500);
+            });
+            $('.diary').mouseover(function(){
+               id = jQuery(this).attr('id');
+               $("#" + id+">.diary-delete").css("display","inline-block");
+            }).mouseout(function(){
+              $("#" + id+">.diary-delete").css("display","none");
+            });
+          });
+
+
+       var SCOPE = {
+                    'diary' : '{:url('api/diary/add')}',
+                    'diaryDelete' : '{:url('api/diary/delete')}',
+          };
+
+
+
+    </script>
+
+
+
+  <script>
+     jQuery(document).ready(function () {
+        jQuery(".diary").dblclick(function () {
+            id = jQuery(this).attr('id');
+            text = jQuery(this).text();
+            if (text) {
+                jQuery(this).html("<input  name=" + id + " >" + text + "</input>");
+                jQuery(".diary > input").focus().blur(function () {
+                    if(jQuery(".diary > input").val() == '') {
+                      jQuery("#" + id).html(text);
+                      return;
+                    }
+                    jQuery.ajax({
+                        type: "POST",
+                        url: "{:url('Api/Diary/edit')}",
+                        data: "ID=" + id + "&Str=" + jQuery("#" + id + " > input").val(),
+                        success: function (msg) {
+                            jQuery("#" + id).html(jQuery("#" + id + " > input").val());
+                        },
+                        error: function (msg) {jQuery("#" + id).text(msg);}
+                    });
+                })
+            }
+        })
+    }) 
+  </script>
+
+
+  <script>
+  $('.diary-delete').click(function(){
+     id = $(this).parents('.diary').attr('id');
+        /*layer.confirm('确认删除?', {icon: 3, title:'提示'}, function(index){
+      
+         layer.close(index);
+      });*/
+    layer.confirm('真的要删除吗', {
+      btn: ['真的','假的'], //按钮
+      shade: false //不显示遮罩
+      }, function(){
+          
+          url = SCOPE.diaryDelete;
+          postData = {'status':0,'id':id};
+          $.post(url,postData,function(result){
+              if(result.status == 1) {
+                layer.msg('删除成功', {icon: 6});
+                 $("#" + id).parents('.allDiary').html('');
+              }else{
+                  layer.msg('发生错误', {icon: 5});
+              }
+          },'json');
+          //layer.msg('删没了', {icon: 1});
+      }, function(){
+          layer.msg('多谢手下留情', {icon: 6});
+      });
+  });
+  </script>
+  </body>
+</html>
