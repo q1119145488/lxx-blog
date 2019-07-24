@@ -1,0 +1,430 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	font-family:"微软雅黑";
+}
+
+nav #search{
+	position:relative;
+}
+.search-remind{
+	border: 1px solid #B0C4DE;
+	position: absolute;
+	width:226px;
+	background-color: #fff;
+	z-index: 999;
+	display: none;
+}
+.search-remind ul{
+	padding:0px;
+}
+.search-remind ul li{
+	list-style-type: none;
+	padding:5px;
+
+	
+}
+.search-remind ul li:hover{
+	background: #E6E6FA;
+}
+.main{
+	font-family:"微软雅黑 Light";
+	width:80%;
+	margin:50px auto;
+}
+.main .about-me-moblie{
+	display: none;
+	width: 100%;
+	box-shadow: 2px 2px 3px 4px rgba(34, 25, 25, 0.2);
+}
+.main .about-me-moblie .pic{
+	float: left;
+	margin:20px auto;
+}
+.main .about-me-moblie .pic img{
+	margin-left:20px;
+	border-radius:50%;
+	width:85;
+	height:85px;
+}
+.main .about-me-moblie h3{
+	padding-left:40px;
+	padding-top:40px;
+	float: left;
+}
+.main .post{
+	width:75%;
+	float:left;
+	min-height: 400px;
+}
+.main .about-me{
+	margin-top:23px;
+	width: 24%;
+	height:300px;
+	float: right;
+	box-shadow: 2px 2px 3px 4px rgba(34, 25, 25, 0.2);
+}
+.main .about-me .pic{
+	width:110px;
+	height:110px;
+	margin:40px auto;
+}
+.main .about-me .pic img{
+	border-radius:50%;
+}
+.main .post .article{
+	width:98%;
+}
+.main .post .article-date{
+	width:65px;
+	background: #2b579a;
+	display: inline-block;
+    position: absolute;
+}
+.main .post .article-date-day{
+	margin: 0;
+    font-size: 38px;
+    color: #fff;
+    text-align: right;
+    font-family: KlavikaMedium-Plain;
+    padding-top: 2px;
+    padding-right: 7px;
+}
+.main .post .article-date-month{
+	color: #fff;
+    background-color: #3e6db5;
+    text-align: right;
+    padding: 1px 10px;
+	font-weight:bold;
+}
+
+.main .post .description{
+	display:inline-block;
+	margin-left:95px;
+}
+.main .post .description .article-title{
+	color: #2b579a;
+	font-weight:bold;
+}
+.main .post .description .sumary{
+	 line-height: 24px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.main .post .tags{
+	padding-top: 10px;
+    margin-bottom: -10px;
+}
+.main .post .tags a{
+	display: inline-block;
+    background-color: #2b579a;
+    color: #fff;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.article .timeBar{
+	background-color: #eee;
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 12px;
+}
+.article .content img{
+	max-width: 100%;
+}
+.pull-right button{
+	border-radius: 50px !important;
+}
+.pull-right button:focus{
+	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.5);
+}
+#QRcode{
+	background-color: #124078;
+    border-color: #0e315d;
+    outline: none;
+} 
+#QRcode:hover{
+	background-color: #0169D9;
+}
+#qc_alert{
+	display: none;
+	position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background:rgba(127,127,127,0.5)
+	/*background: #808080;*/
+}
+#qc_alert .alert_content{
+	max-width: 500px;
+    margin: 5.75rem auto;
+	position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: .3rem;
+    outline: 0;
+    z-index: 999;
+}
+#remind{
+	background-color: #eee;
+	padding: 5px;
+}
+.message{
+	position: relative;
+}
+.message input{
+	margin-bottom:20px;
+	height:30px;
+}
+.message input:first-child{
+	width:30%;
+}
+.message #email{
+	width:50%;
+}
+.message button{
+	width:30%;
+	margin:10px auto;
+}
+.skill{
+	width:30%;
+	margin-left:10%;
+	float:left;
+}
+.like{
+	padding: 8px;
+    background: #fff;
+    margin-right: 4px;
+}
+.badge{
+	display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #777;
+    border-radius: 10px;
+}
+#message-list{
+	width: 62%;
+	position: absolute;
+
+}
+#message-list .avatar{
+	background-color: #804998;
+    color: #fff;
+    font-weight: 100;
+    font-size: 27px;
+    text-align: center;
+    height: 45px;
+    width: 45px;
+    padding-top: 5px;
+    float: left;
+}
+.update-tree{
+	width: 80%;
+	height:80px;
+	margin:auto;
+	
+}
+.update-tree ul{
+	padding-left: 23px;
+	margin-top: 50px;
+	border-left: 1px solid #999999;
+}
+.update-tree ul li{
+	margin-left: -7px;
+	padding-left: 50px;
+	padding-top: 100px;
+	font-size: 20px;
+	
+}
+.update-tree ul li span{
+	font-size: 16px;
+}
+.top{
+	position:fixed;
+	bottom:20px;
+	right:5%;
+	cursor: pointer;
+}
+.clear{
+	clear:both;
+}
+.captcha{
+	border: 1px solid transparent;
+	border-color: #ddd;
+	padding: 5px 10px 5px 10px;
+	float: left;
+}
+#captchaInput{
+	float: left;
+	height:42px;
+	font-size: 24px;
+}
+#verifyRight{
+	margin-top: 15px;
+	margin-left: 15px;
+	color: #3c763d;
+	float: left;
+	display: none;
+}
+#verifyWrong{
+	color: #EE2C2C;
+	margin-top: 15px;
+	margin-left: 15px;
+	float: left;
+	display: none;
+}
+/*top tags*/
+.card{
+    margin-top: 23px;
+    width: 24%;
+    float: right;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+.post .card{
+	width: 100%;
+}
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0,0,0,.03);
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+.card-body {
+    padding: 1rem;
+}
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+.toptags-list a {
+    background-color: #2b579a;
+    color: #fff;
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding: 5px 10px;
+}
+/*搜索框*/
+.navbar-form .form-control {
+    background: rgba(255,255,255,.2);
+    border-width: 0;
+    box-shadow: none;
+    color: #fff;
+    margin-right: 0 !important;
+    width: 226px;
+}
+@media screen and (max-width: 768px) {
+    .main {
+        width:100%;
+        margin:auto;
+    }
+
+    .main .post{
+	width:100%;
+	padding-left: 15px;
+	padding-right: 15px;
+	}
+    .main .about-me-moblie{
+	display: block;
+	margin-top: 40px;
+	}
+	.main .about-me-moblie a:link{
+		color: #000;
+	}
+	.main .about-me-moblie h3{
+	font-size: 1.3em;
+	}
+    .main .about-me{
+    	display: none;
+    }
+    .main .post .article{
+	width:100%;
+	margin:auto;
+	}
+	.main .post .description{
+
+	margin:auto;
+	}
+	.main .post .article-date-day{
+    font-size: 28px;
+    padding-right: 13px;
+	}
+	.main .post .article-date-month{
+	font-size: 12px;
+	}
+	.message input[type="text"] {
+	width: 100%;
+	}
+	.message button{
+	width:50%;
+	}
+	.main .post .article-date{
+		display: none;
+	}
+	.main .post .tags a{
+		padding: 2px 5px;
+	}
+	.message #email{
+	width:100%;
+	}
+	#message-list{
+		width:90%;
+	}
+	#message-list .avatar{
+		height: 40px;
+		width: 40px;
+		font-size: 21px;
+	}
+	section  .card{
+		display: none;
+	}
+	.navbar-form .form-control {
+	    width: 100%;
+	    margin-bottom: 5px;
+	}
+	.navbar-form .glyphicon-search{
+		width: 100%;
+	}
+	.search-remind{
+		display: none;
+	}
+}
+@media screen and (max-width: 320px) {
+
+	.main .about-me-moblie h3{
+	padding-left:20px;
+	font-size: 1.17em;
+	}
+
+}

@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+
+	.container-fluid{background-color:#2A5798;padding-left:10%;}
+	.navbar-inverse .navbar-brand{color:#fff;font-weight:bold;font-size:26px;}
+	.navbar-toggle{}
+	.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{background-color:#2A5798;}
+	.navbar-header{background-color:#2A5798s	;}
+	nav{color:#fff;	}
+	.navbar-inverse .navbar-nav>li>a{color:#fff;}
+	.navbar-inverse .navbar-nav>li{padding-left:20px;}
+	.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{background-color:#2A5798;}
+	
