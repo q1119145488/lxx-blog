@@ -22,7 +22,8 @@ class Index extends Controller
         }
     	return $this->fetch('',[
         	'user'=>$user,
-            'roomMember'=>$roomMember
+            'roomMember'=>$roomMember,
+            'ip'=>'103.74.192.84'
         ]);
     }
 
