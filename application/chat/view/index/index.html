@@ -78,6 +78,7 @@
 		alert('连接异常,刷新页面重连');
 	}
 	ws.onopen = function(evt) { 
+		console.log('已成功连接房间')
 	};
 	ws.onmessage = function(evt) {
 		//json转为数组
@@ -130,8 +131,9 @@
 		}
 	};
 	ws.onclose = function(){
-      // 关闭 websocket
-      alert("连接已关闭..."); 
+      if(confirm('连接已关闭，是否重新进入房间?')){
+      	var ws = new WebSocket('ws://{$ip}:9501?room99=1&username='+username+'&avatar='+avatar+'&userId='+userId);
+      }
    	};
 
    	$.emoticons({
