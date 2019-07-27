@@ -72,8 +72,9 @@
 		avatar = "{$user.avatar}",
 		userId = "{$user.id}",
 		online = $('.userlist .popover-title span');
+	var ws = '';
 	try {
-		var ws = new WebSocket('ws://{$ip}:9501?room99=1&username='+username+'&avatar='+avatar+'&userId='+userId);
+		ws = new WebSocket('ws://{$ip}:9501?room99=1&username='+username+'&avatar='+avatar+'&userId='+userId);
 	}catch(err){
 		alert('连接异常,刷新页面重连');
 	}
@@ -132,7 +133,7 @@
 	};
 	ws.onclose = function(){
       if(confirm('连接已关闭，是否重新进入房间?')){
-      	var ws = new WebSocket('ws://{$ip}:9501?room99=1&username='+username+'&avatar='+avatar+'&userId='+userId);
+     	ws = new WebSocket('ws://{$ip}:9501?room99=1&username='+username+'&avatar='+avatar+'&userId='+userId);
       }
    	};
 
