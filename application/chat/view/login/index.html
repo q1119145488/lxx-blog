@@ -52,7 +52,7 @@
 <script type="text/javascript" src="{:url('/')}__STATIC__/js/jquery.cookie.js"></script>
 
 <script type="text/javascript">
-	var ws = new WebSocket('wws://{$ip}:9501?page=login');
+	var ws = new WebSocket('ws://{$ip}:9501?page=login');
 	ws.onopen = function(evt) { 
 	  	console.log("Connection open ...");
 	  	ws.onmessage = function(evt) {
