@@ -476,4 +476,6 @@ ul{
 	z-index: 9;
 	border-color: #eb7350;
 }
-
+.footer{
+	display: none;
+}

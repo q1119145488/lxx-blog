@@ -33,7 +33,7 @@ $(document).ready(function(){
             timeout: 2000,
             success: function (result) {
                 if(result.code == 10001)
-                	window.location.href ='/room/index/index'; // 页面跳转
+                	window.location.href ='/chat/index/index'; // 页面跳转
                 else{
                 	alert('创建用户失败');
                 	return false;
