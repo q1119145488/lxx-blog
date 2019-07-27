@@ -9,7 +9,8 @@ class Login extends Controller
 		$randomName = $generator->getName();*/
 		$randomName = 'user'.rand(1,1000);
         return $this->fetch('',[
-        	'randomName'=>$randomName	
+        	'randomName'=>$randomName,
+        	'ip'=>'103.74.192.84'
         ]);
     }
 }

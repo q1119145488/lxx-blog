@@ -73,7 +73,7 @@
 		userId = "{$user.id}",
 		online = $('.userlist .popover-title span');
 	try {
-		var ws = new WebSocket('ws://45.195.77.150:9501?room99=1&username='+username+'&avatar='+avatar+'&userId='+userId);
+		var ws = new WebSocket('ws://{{$ip}}?room99=1&username='+username+'&avatar='+avatar+'&userId='+userId);
 	}catch(err){
 		alert('连接异常,刷新页面重连');
 	}
