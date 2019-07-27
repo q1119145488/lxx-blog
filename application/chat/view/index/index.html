@@ -141,6 +141,7 @@
 		var $result = $('.main .chat_info');
 		$('#subxx').click(function(){
 			let message = $("#input-box").val();
+			if( !message ) return ;
 	   		let send_message = {"type":'normal','message':message,'userId':userId};
 	   		ws.send(JSON.stringify(send_message));
 	   		var date = new Date(),
@@ -153,9 +154,13 @@
 			$('.main .chat_info').append('<li class="right"><img src="' + avatar +' " alt=""><b>' + userName + '</b><i>'+time+'</i><div class="aaa">' + message  +'</div></li>') ;
 		}
 		// 滚动条滚到最下面
-		$('.scrollbar-macosx.scroll-content.scroll-scrolly_visible').animate({
+		/*$('.scrollbar-macosx.scroll-content.scroll-scrolly_visible').animate({
 			scrollTop: $('.scrollbar-macosx.scroll-content.scroll-scrolly_visible').prop('scrollHeight')
-		}, 500);
+		}, 500);*/
+
+		var scrollHeight = $('.container').prop("scrollHeight");
+  		$('.container').animate({scrollTop:scrollHeight}, 400);
+
 		$('.center').removeAttr("style")//
 		$('.text input').val(''); // 清空输入框
 		$('.text input').focus(); // 输入框获取焦点
