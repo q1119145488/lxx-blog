@@ -15,9 +15,9 @@ return [
     // 服务器地址
     'hostname'        => '127.0.0.1',
     // 数据库名
-    'database'        => 'goaheadl_info',
+    'database'        => 'lxx66',
     // 用户名
-    'username'        => 'goaheadl_info',
+    'username'        => 'root',
     // 密码
     'password'        => 'q971432',
     // 端口
