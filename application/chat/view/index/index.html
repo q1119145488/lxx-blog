@@ -41,7 +41,7 @@
 			</ul>
 			<div class="clapboard hidden"></div>
 		</div>
-		<div class="main container">
+		<div class="main container" id="chat">
 			<div class="col-md-12">
 				<ul class="chat_info">
 					
@@ -158,8 +158,9 @@
 			scrollTop: $('.scrollbar-macosx.scroll-content.scroll-scrolly_visible').prop('scrollHeight')
 		}, 500);*/
 
-		var scrollHeight = $('.container').prop("scrollHeight");
-  		$('.container').animate({scrollTop:scrollHeight}, 400);
+		var div = document.getElementById('chat'); 
+	    div.scrollTop = div.scrollHeight; 
+
 
 		$('.center').removeAttr("style")//
 		$('.text input').val(''); // 清空输入框
