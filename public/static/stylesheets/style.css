@@ -419,6 +419,7 @@ ul{
 	background: #fff;
 	border: 1px solid #dbdbdb;
 	border-radius: 2px;
+	bottom: 34px;
 }
 .widget-layer:before{
 	position: absolute;
