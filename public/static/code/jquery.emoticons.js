@@ -184,7 +184,7 @@
             $layer.css({
                 left: offset.left+options.left,
                 //top: offset.top+height+options.top
-                bottom:34px
+                bottom:'34px'
             }).show();
             options.onShow();
         });
