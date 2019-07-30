@@ -34,6 +34,7 @@ class WebsocketTest {
         echo "server: handshake success with fd{$request->fd}\n";
         //访问的用户fd
         $userFd = $request->fd;
+        //链接参数
         $getInfo = $request->get;
         if( isset($getInfo['page']) && $getInfo['page'] == 'login' ){
             //$this->redis->HMSET('user_'.$userFd,'username',)

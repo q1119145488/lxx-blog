@@ -93,21 +93,6 @@
 	      close_action()
 	   	};
 	}
-   	$.emoticons({
-		'activeCls':'trigger-active'
-	},function(api){
-		var $content = $('#input-box');
-		var $result = $('.main .chat_info');
-		$('#subxx').click(function(){
-			let message = $("#input-box").val();
-			if( !message ) return ;
-	   		let send_message = {"type":'normal','message':message,'userId':userId};
-	   		ws.send(JSON.stringify(send_message));
-	   		var date = new Date(),
-   				time = date.getHours()+':'+ date.getMinutes();
-			sends_action(username,avatar,api.format(message),time)
-		});
-	});
    	function sends_action (userName='', avatar='', message='',time='') {
 		if(message!='') {
 			$('.main .chat_info').append('<li class="right"><img src="' + avatar +' " alt=""><b>' + userName + '</b><i>'+time+'</i><div class="aaa">' + message  +'</div></li>') ;
